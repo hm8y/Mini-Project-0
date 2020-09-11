@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\hm8y-miniproject0.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\hm8y-miniproject0.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Sep 11 15:20:03 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Sep 11 18:05:42 2020
 <BR><P>
 <H3>Maximum Stack Usage =          4 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; Output_Init
+fputc
 <P>
 <H3>
 Functions with no stack information
@@ -601,42 +601,29 @@ Global Symbols
 
 <P><STRONG><a name="[91]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[7c]"></a>main</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = main &rArr; Output_Init
-</UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
-</UL>
-<P><STRONG><a name="[82]"></a>PLL_Init</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, pll.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[86]"></a>UART_Init</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, uart.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
 </UL>
 
-<P><STRONG><a name="[88]"></a>UART_Init</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, uart.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
+<P><STRONG><a name="[84]"></a>UART_InChar</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
 </UL>
 
-<P><STRONG><a name="[87]"></a>UART_InChar</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
-</UL>
-
-<P><STRONG><a name="[85]"></a>UART_OutChar</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, uart.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
+<P><STRONG><a name="[82]"></a>UART_OutChar</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, uart.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fgetc
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
 <P><STRONG><a name="[7d]"></a>fputc</STRONG> (Thumb, 44 bytes, Stack size 4 bytes, uart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = fputc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_OutChar
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_OutChar
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printfb.o(i.__0printf$bare)
 </UL>
-<P><STRONG><a name="[86]"></a>fgetc</STRONG> (Thumb, 20 bytes, Stack size 4 bytes, uart.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_OutChar
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_InChar
+<P><STRONG><a name="[83]"></a>fgetc</STRONG> (Thumb, 20 bytes, Stack size 4 bytes, uart.o(.text), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_OutChar
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_InChar
 </UL>
 
 <P><STRONG><a name="[92]"></a>ferror</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uart.o(.text), UNUSED)
@@ -649,14 +636,27 @@ Global Symbols
 
 <P><STRONG><a name="[96]"></a>Output_Color</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, uart.o(.text), UNUSED)
 
-<P><STRONG><a name="[83]"></a>Output_Init</STRONG> (Thumb, 8 bytes, Stack size 4 bytes, uart.o(.text))
+<P><STRONG><a name="[85]"></a>Output_Init</STRONG> (Thumb, 8 bytes, Stack size 4 bytes, uart.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = Output_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
+<BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
+<P><STRONG><a name="[87]"></a>PLL_Init</STRONG> (Thumb, 118 bytes, Stack size 0 bytes, pll.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[7c]"></a>main</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = main &rArr; Output_Init
+</UL>
+<BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLL_Init
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Output_Init
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
+</UL>
 <P><STRONG><a name="[81]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
 </UL>
@@ -671,7 +671,7 @@ Global Symbols
 
 <P><STRONG><a name="[98]"></a>__1printf$bare</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
 
-<P><STRONG><a name="[84]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare))
+<P><STRONG><a name="[88]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare))
 <BR><BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
